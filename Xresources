@@ -1,0 +1,90 @@
+! clean up urxvt, add keybinds
+URxvt.intensityStyles: false
+URxvt.scrollBar: false
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! font
+URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:size=10:antialias=true:hinting=true,xft:Source\ Code\ Pro\ for\ Powerline:size=10:antialias=true:hinting=true
+
+! terminal padding
+URxvt.internalBorder: 5
+
+! uncomment for transparent terminal if you are ready to be made fun of in #rice
+#URxvt.transparent:	true
+#URxvt.shading:		60
+
+! make otf / ttf fonts look pretty.  does not matter if you are using a bitmap font.
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! clickable links, clipboard support, mouse wheel support, and on the fly font resizing
+! you will need to install the relevent perl extensions for these to work
+URxvt.perl-ext-common: default,matcher,clipboard,vtwheel,resize-font
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
+
+! colors
+
+! hard contrast: *background: #1d2021
+!*background: #282828
+*background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+!ROFI Config
+    rofi.opacity: 80
+    rofi.width: 50
+    rofi.lines: 5
+    rofi.columns: 1
+    rofi.font: SourceCodePro 9
+    rofi.fg: #fabd2f
+    rofi.bg: #32302f
+    rofi.hlfg: #fabd2f
+    rofi.hlbg: #32302f
+    rofi.bc: #d79921
+    rofi.bw: 2
+    rofi.loc: 0
+    rofi.padding: 2
+    rofi.yoffset: -2
+    rofi.xoffset: 0
+    rofi.fixed-num-lines: false
+    rofi.hmode: false
+    rofi.terminal: urxvt 
+    rofi.ssh-set-title: true
+# ROFI keys added via i3/config
+#    rofi.key-window: Alt+Tab 
+#    rofi.key-run: mod4+d
+#    rofi.ssh: mod4+shift+d

@@ -1,0 +1,283 @@
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -video-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+ font pango:nimbus sans 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# autostart programs
+#exec --no-startup-id conky -c ~/.config/panel/empty_conky
+#exec --no-startup-id mkfontdir ~/.local/share/fonts && xset +fp ~/.local/share/fonts && xset fp rehash && ~/.config/panel/bar_config
+exec --no-startup-id sh ~/.fehbg 
+# exec --no-startup-id feh --randomize --bg-fill /mnt/data/images
+exec --no-startup-id urxvtd -q -f -o
+exec --no-startup-id transmission-daemon
+exec --no-startup-id pcmanfm /mnt/data/downloads
+exec --no-startup-id firefox
+# exec --no-startup-id urxvtc
+
+
+# start a terminal
+bindsym $mod+Return exec urxvtc
+
+# Floating windows
+for_window [class="Steam"] floating enable
+
+# start programs
+bindsym $mod+F1 exec --no-startup-id 9menu -popup -bg "#2d2d2d" -fg "#f7f7f7" -font "-*-fixed-bold-r-normal-*-14-*-*-*-*-*-*-*" -teleport -file ./.9menurc
+#bindsym $mod+e  exec ranger
+bindsym $mod+f  exec --no-startup-id firefox
+bindsym $mod+c  exec --no-startup-id google-chrome-beta
+bindsym $mod+g  exec --no-startup-id chromium
+bindsym $mod+shift+F1 exec --no-startup-id scrot -q 100 -c -d 2 "/mnt/data/firefox/Scrot_%Y-%m-%d_%H:%M:%S.png"
+bindsym F12 exec --no-startup-id "sleep 2; xset dpms force off"
+
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d exec rofi -show run -font "inconsolate 9" -fg "#ecedee" -bg "#121212" -hlfg "#95C7AE" -hlbg "#000000" -o 100
+
+# start ROFI
+bindsym $mod+d exec rofi -show run
+bindsym Mod1+Tab exec rofi -show window
+
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+#bindsym $mod+c split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+x fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+
+# customize workspace names
+set $WS1 1:
+set $WS2 2:
+set $WS3 3:
+set $WS4 4:
+set $WS5 5:
+set $WS6 6:
+set $WS7 7:
+set $WS8 8:
+set $WS9 9:
+set $WS10 10:
+
+
+# switch to workspace
+bindsym Mod4+1 workspace $WS1
+bindsym Mod4+2 workspace $WS2
+bindsym Mod4+3 workspace $WS3
+bindsym Mod4+4 workspace $WS4
+bindsym Mod4+5 workspace $WS5
+bindsym Mod4+6 workspace $WS6
+bindsym Mod4+7 workspace $WS7
+bindsym Mod4+8 workspace $WS8
+bindsym Mod4+9 workspace $WS9
+bindsym Mod4+0 workspace $WS10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace $WS1
+bindsym Mod4+Shift+2 move container to workspace $WS2
+bindsym Mod4+Shift+3 move container to workspace $WS3
+bindsym Mod4+Shift+4 move container to workspace $WS4
+bindsym Mod4+Shift+5 move container to workspace $WS5
+bindsym Mod4+Shift+6 move container to workspace $WS6
+bindsym Mod4+Shift+7 move container to workspace $WS7
+bindsym Mod4+Shift+8 move container to workspace $WS8
+bindsym Mod4+Shift+9 move container to workspace $WS9
+bindsym Mod4+Shift+0 move container to workspace $WS10
+
+# assign [class="URxvt"] $WS1
+assign [class="Firefox"] $WS3
+assign [class="google-chrome-beta"] $WS2
+assign [class="Chromium"] $WS2
+assign [class="Steam"] $WS2
+assign [class="zathura"] $WS2
+
+# border / titlebar
+#new_window pixel 0
+#hide_edge_borders both
+#bindsym Control+Shift+x [class="^.*"] border toggle
+#for_window [class="^.*"] border pixel 1
+#for_window [class="URxvt"] border normal
+#for_window [class="Firefox"] border pixel 0
+#for_window [class="Chromium"] border pixel 0
+#for_window [class="Feh"] border pixel 0
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec i3-msg exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym k resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Right resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Left resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# colors
+client.focused #E2E2E2 #f7f7f7 #4FC0E8
+client.unfocused #D5E7F7 #f7f7f7 #C1D1E0
+client.focused_inactive #D5E7F7 #f7f7f7 #C1D1E0
+client.urgent #51c4d4 #ecedee #51c4d4
+
+# i3 Gaps
+for_window [class="^.*"] border pixel 0
+smart_borders on
+gaps inner 10 
+gaps outer 4 
+
+# Gap mode toggle
+
+bindsym $mod+XF86Launch1 mode "$gaps_toggle_off"
+
+mode "$gaps_toggle_off" {
+
+	set gaps inner 1 
+	set gaps outer 1 
+#	bindsym $mod+XF86Launch1 mode "$gaps_toggle_on"
+
+}
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command conky -c $HOME/.config/panel/conky/conkyrc
+#	mode dock
+#	position top
+#	font pango:open sans 7.8
+#	strip_workspace_numbers yes
+#	height 20
+#colors {
+#        background #504945
+#        statusline #fabd2f
+#        separator #51c4d4
+#
+#        focused_workspace  #504945 #504945 #fabd2f
+#        active_workspace   #504945 #504945 #fabd2f
+#        inactive_workspace #504945 #504945 #b77901
+#        urgent_workspace   #504945 #504945 #fabd2f
+#    }
+#}
+
+
+
+
+
+
+#################################################################################################################################
+
+
+# switching between workspace
+# http://i3wm.org/docs/userguide.html#_changing_named_workspaces_moving_to_workspaces
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev 
+
+# xmodmap ~/.Xmodmap &
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set -c 0 Master 2%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set -c 0 Master 2%-
+
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 15%+
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 15%-
+
+bindsym XF86AudioMute exec amixer -c 0 -q set Master toggle
+
+##  bindsym $MOD+SHIFT+x exec i3lock -i /mnt/data/images/1b3a047dd12ba1db51192a95781be456.jpg
+#bindsym $MOD+SHIFT+l exec i3lock -c 000000
+
+
+#################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
